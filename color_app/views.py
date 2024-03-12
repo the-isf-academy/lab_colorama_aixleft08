@@ -38,6 +38,11 @@ def random_color_view(request):
 
     return render(request, 'color_app/random_color.html', params)
 
+def color_view(request):
+    
+    response = render(request, 'color_app/color')
+    return response
+
 #######################
 # Class Based Views
 #######################
@@ -45,7 +50,7 @@ def random_color_view(request):
 class ColorListView(ListView):                                                                                         
     model = Color                                                                                                      
     template_name = "color_app/color_list.html"                                                                       
-    queryset = Color.objects.order_by("name")                                                                          
+    queryset = Color.objects.order_by("-red")                                                                          
                                                                                                                        
 class NewColorView(CreateView):                                                                                        
     model = Color                                                                                                      
